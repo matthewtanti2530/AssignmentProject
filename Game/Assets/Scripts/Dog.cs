@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Dog : MonoBehaviour
+
 {
+public Rigidbody rb;
+
     //This variable contains the speed of the Dog
     [SerializeField]
     private float _speed = 3.5f;
@@ -16,9 +19,9 @@ public class Dog : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update();
+    if(Input.GetKey("right"))
     {
         
     }
-
 }
