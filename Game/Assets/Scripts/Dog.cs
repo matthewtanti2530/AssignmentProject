@@ -4,22 +4,36 @@ using UnityEngine;
 
 public class Dog : MonoBehaviour
 {
-private float _speed = 3.5f;
+private float _speed = 5f;
+private Rigidbody rb;
+private bool DogIsOnTheGround = true;
     
     // Start is called before the first frame update
     private void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        float xDirection = Input.GetAxisRaw("Horizontal");
-        float zDirection = Input.GetAxisRaw("Vertical");
+        float horizontal = Input.GetAxis("Horizontal") * _speed * Time.deltaTime;
+        float vertical = Input.GetAxis("Vertical") * _speed * Time.deltaTime;
 
-        Vector3 moveDirection = new Vector3(xDirection, 0f, zDirection);
+        transform.Translate(horizontal, 0f, vertical);
 
-        transform.position = moveDirection * _speed;
+        if(Input.GetButtonDown("Jump") && DogIsOnTheGround)
+        {
+            rb.AddForce(new Vector3(0, 5, 0), ForceMode.Impulse);
+            DogIsOnTheGround = false;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.name == "Ground")
+        {
+            DogIsOnTheGround = true;
+        }
     }
 }
