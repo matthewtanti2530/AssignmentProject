@@ -151,10 +151,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTerrainCount: 20
-  terrains:
-  - {fileID: 6788967256354324988, guid: abe3ae6b90379f94ba79bb96d5462797, type: 3}
-  - {fileID: 8469830958745863753, guid: 9f2bd149eb43d934fa9879f9ee493c8d, type: 3}
-  - {fileID: 7514748327173089715, guid: a2e4452a6a68a794bbb19ef6d20564cf, type: 3}
+  terrainDatas:
+  - {fileID: 11400000, guid: 390f0ba250e816648adb8f87e9f3970a, type: 2}
+  - {fileID: 11400000, guid: 2dc75e1406b0e444b8d10b4fae030c6a, type: 2}
+  - {fileID: 11400000, guid: a68ad9ab1a7c03a42832d2a763e2fd4d, type: 2}
 --- !u!4 &463241349
 Transform:
   m_ObjectHideFlags: 0

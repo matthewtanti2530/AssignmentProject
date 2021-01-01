@@ -15,37 +15,36 @@ public class TerrainGenerator : MonoBehaviour
     {
         for(int i = 0; i < maxTerrainCount; i++)
         {
-            SpawnTerrain();
+            SpawnTerrain(true);
         }
+        maxTerrainCount = currentTerrains.Count;
     }
 
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.W))
         {
-            SpawnTerrain();
+            SpawnTerrain(false);
         }
     }
 
-    private void SpawnTerrain()
+    private void SpawnTerrain(bool isStart)
     {
             int whichTerrain = Random.Range(0, terrainDatas.Count);
-            int terrainInSuccession = Random.Range(0, terrainDatas[whichTerrain].maxInSuccession);
+            int terrainInSuccession = Random.Range(1, terrainDatas[whichTerrain].maxInSuccession);
             for (int i = 0; i <terrainInSuccession; i++)
             {
-                GameObject terrain = Instantiate(terraind[Random.Range(0, terrains.Count-1)], currentPosition, Quaternion.identity);
-                 currentTerrains.Add(terrain);
-                if(currentTerrains.Count > maxTerrainCount)
+                GameObject terrain = Instantiate(terrainDatas[whichTerrain].terrain, currentPosition, Quaternion.identity);
+                currentTerrains.Add(terrain);
+                if(!isStart)
                 {
-                    Destroy(currentTerrains[0]);
-                    currentTerrains.RemoveAt(0);
+                    if (currentTerrains.Count > maxTerrainCount)
+                    {
+                        Destroy(currentTerrains[0]);
+                        currentTerrains.RemoveAt(0);
+                    }
                 }
                 currentPosition.x++;
             }
-            GameObject terrain = Instantiate(terrainDatas[whichTerrain].terrain, currentPosition, Quaternion.identity);
-            /*
-            GameObject terrain = Instantiate(terraind[Random.Range(0, terrains.Count-1)], currentPosition, Quaternion.identity);
-            
-            */
     }
 }
