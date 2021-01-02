@@ -4,36 +4,45 @@ using UnityEngine;
 
 public class Dog : MonoBehaviour
 {
-private float _speed = 5f;
-private Rigidbody rb;
-private bool DogIsOnTheGround = true;
-    
-    // Start is called before the first frame update
+    private Animator animator;
+    private bool isHopping;
+
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal") * _speed * Time.deltaTime;
-        float vertical = Input.GetAxis("Vertical") * _speed * Time.deltaTime;
-
-        transform.Translate(horizontal, 0f, vertical);
-
-        if(Input.GetButtonDown("Jump") && DogIsOnTheGround)
+        if (Input.GetKeyDown(KeyCode.W) && !isHopping) 
         {
-            rb.AddForce(new Vector3(0, 5, 0), ForceMode.Impulse);
-            DogIsOnTheGround = false;
+
+            float zDifference = 0;
+            if(transform.position.z % 1 != 0)
+            {
+                zDifference = Mathf.Round(transform.position.z) - transform.position.z;
+            }
+            MoveCharacter(new Vector3(1, 0, zDifference));
+        }
+        else if (Input.GetKeyDown(KeyCode.A) && !isHopping)
+        {
+            MoveCharacter(new Vector3(0, 0, 1));
+        }
+        else if (Input.GetKeyDown(KeyCode.D) && !isHopping)
+        {
+            MoveCharacter(new Vector3(0, 0, -1));
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void MoveCharacter(Vector3 difference)
     {
-        if(collision.gameObject.name == "Ground")
-        {
-            DogIsOnTheGround = true;
-        }
+        animator.SetTrigger("hop");
+        isHopping = true;
+        transform.position = (transform.position + difference);
+    }
+
+    public void FinishHop()
+    {
+        isHopping = false;
     }
 }
