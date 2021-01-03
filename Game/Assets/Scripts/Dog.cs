@@ -14,7 +14,7 @@ public class Dog : MonoBehaviour
 
     private void Update()
     {
-        //if the W key is pressed
+        //If the W key is pressed
         if (Input.GetKeyDown(KeyCode.W) && !isHopping) 
         {
 
@@ -25,17 +25,17 @@ public class Dog : MonoBehaviour
             }
             MoveCharacter(new Vector3(1, 0, zDifference));
         }
-        //if the A key is pressed
+        //If the A key is pressed
         else if (Input.GetKeyDown(KeyCode.A) && !isHopping)
         {
             MoveCharacter(new Vector3(0, 0, 1));
         }
-        //if the D key is pressed
+        //If the D key is pressed
         else if (Input.GetKeyDown(KeyCode.D) && !isHopping)
         {
             MoveCharacter(new Vector3(0, 0, -1));
         }
-        //if the S key is pressed
+        //If the S key is pressed
         else if (Input.GetKeyDown(KeyCode.S) && !isHopping)
         {
             MoveCharacter(new Vector3(-1, 0, 0));
