@@ -41,7 +41,6 @@ public class TerrainGenerator : MonoBehaviour
                 {
                     if (currentTerrains.Count > maxTerrainCount)
                     {
-                        Destroy(currentTerrains[0]);
                         currentTerrains.RemoveAt(0);
                     }
                 }
