@@ -53,4 +53,10 @@ public class Dog : MonoBehaviour
     {
         isHopping = false;
     }
+
+    //If the player goes past 24f on the z-axis (left)
+    //insert code...
+
+    //If the player goes past -24f on the z-axis (right)
+    //insert code...
 }
