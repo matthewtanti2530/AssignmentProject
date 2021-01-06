@@ -24,21 +24,33 @@ public class Dog : MonoBehaviour
                 zDifference = Mathf.Round(transform.position.z) - transform.position.z;
             }
             MoveCharacter(new Vector3(1, 0, zDifference));
+
+            var audioSource = GetComponent<AudioSource>();
+            audioSource.Play();
         }
         //If the A key is pressed
         else if (Input.GetKeyDown(KeyCode.A) && !isHopping)
         {
             MoveCharacter(new Vector3(0, 0, 1));
+
+            var audioSource = GetComponent<AudioSource>();
+            audioSource.Play();
         }
         //If the D key is pressed
         else if (Input.GetKeyDown(KeyCode.D) && !isHopping)
         {
             MoveCharacter(new Vector3(0, 0, -1));
+
+            var audioSource = GetComponent<AudioSource>();
+            audioSource.Play();
         }
         //If the S key is pressed
         else if (Input.GetKeyDown(KeyCode.S) && !isHopping)
         {
             MoveCharacter(new Vector3(-1, 0, 0));
+
+            var audioSource = GetComponent<AudioSource>();
+            audioSource.Play();
         }
     }
 
