@@ -85,7 +85,7 @@ public class Dog : MonoBehaviour
 
     IEnumerator Standstill()
     {
-        yield return new WaitForSeconds(12);
+        yield return new WaitForSeconds(5);
         SceneManager.LoadScene("Menu");
     }
 
